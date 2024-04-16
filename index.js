@@ -68,8 +68,14 @@ document.addEventListener('click', function(event) {
     if (event.target.classList.contains('delete-button')) {
       var formCount = document.querySelectorAll('fieldset.beverage').length;
       if (formCount > 1) {
-        var formToDelete = event.target.closest('form');
+        var readyToDelete = event.target.closest('form').querySelector('.submit-button');
+        console.log(event.target);
+        readyToDelete.remove();
+        var formToDelete = event.target.closest('.beverage');
+        console.log(formToDelete)
         formToDelete.remove();
+        console.log(1)
+        console.log(2)
       }
     }
   });
