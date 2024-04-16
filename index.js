@@ -88,15 +88,53 @@ const submitButtons = document.querySelector('.submit-button');
 
 submitButtons.addEventListener('click', function(event) {
     var modalText = `Вы заказали ${number} ${getDrinkWord(number)}`;
-    document.querySelector('.modal-content').textContent = modalText;    
+    document.querySelector('.text').textContent = modalText;    
+
 
     event.preventDefault();
     document.querySelector('.modal-overlay').style.display = 'flex';
+
+    var beverages = document.querySelectorAll('.beverage');
+    var table = document.querySelector('.modal-table');
+
+    beverages.forEach(function(beverage, index) {
+        var drinkType = beverage.querySelector('select').value;
+
+        var milkRadios = beverage.querySelectorAll('input[name="milk"]');
+        var milk;
+        milkRadios.forEach(function(radio) {
+            if (radio.checked) {
+                milk = radio.nextElementSibling.textContent.trim();
+            }
+        });
+
+        var optionsCheckboxes = beverage.querySelectorAll('input[name="options"]:checked');
+        var extras = [];
+        optionsCheckboxes.forEach(function(checkbox) {
+            extras.push(checkbox.nextElementSibling.textContent.trim());
+        });
+
+        var newRow = table.insertRow(-1);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+
+        cell1.textContent = 'Напиток ' + (index + 1) + ': ' + drinkType;
+        cell2.textContent = 'Молоко: ' + milk;
+        cell3.textContent = 'Дополнения: ' + extras.join(', ');
+    });
+
+
 });
+    
 
 
 document.querySelector('.close-modal').addEventListener('click', function() {
-console.log("ASDFASDFSADFSD");
-
-document.querySelector('.modal-overlay').style.display = 'none';
+    var table = document.querySelector('.modal-table');
+    
+    // Очищаем содержимое таблицы
+    while (table.rows.length > 1) {
+        table.deleteRow(1);
+    }
+    document.querySelector('.modal-overlay').style.display = 'none';
 });
