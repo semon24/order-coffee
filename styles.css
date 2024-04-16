@@ -57,4 +57,42 @@
     color: #ff0000; /* Цвет "крестика" */
   }
 
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-overlay-open {
+
+  }
+  
+  .modal {
+    width: 500px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #000;
+  }
+  
+  .modal-content {
+    text-align: center;
+  }
   

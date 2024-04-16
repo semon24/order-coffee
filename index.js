@@ -54,9 +54,6 @@ myButton.addEventListener('click', function() {
         </label>
       </div>
     </fieldset>
-    <div style="margin-top: 30px">
-      <button type="submit" class="submit-button">Готово</button>
-    </div>
   </form>
     `;
 
@@ -80,3 +77,18 @@ document.addEventListener('click', function(event) {
     }
   });
   
+
+  const submitButtons = document.getElementsByClassName('submit-button');
+
+  for (let i = 0; i < submitButtons.length; i++) {
+    submitButtons[i].addEventListener('click', function(event) {
+      event.preventDefault();
+      document.querySelector('.modal-overlay').style.display = 'flex';
+    });
+  }
+
+document.querySelector('.close-modal').addEventListener('click', function() {
+    console.log("ASDFASDFSADFSD");
+    
+    document.querySelector('.modal-overlay').style.display = 'none';
+});
