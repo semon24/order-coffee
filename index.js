@@ -138,3 +138,13 @@ document.querySelector('.close-modal').addEventListener('click', function() {
     }
     document.querySelector('.modal-overlay').style.display = 'none';
 });
+
+
+let textArea = document.querySelector('.additional-text');
+let output = document.querySelector('.additional-output');
+
+textArea.addEventListener('input', function () {
+    let text = textArea.value;
+    let highlightedText = text.replace(/(срочно|быстрее|побыстрее|скорее|поскорее|очень нужно)/gi, "<b>$1</b>");
+    output.innerHTML = highlightedText;
+});
