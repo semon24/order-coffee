@@ -68,10 +68,6 @@
     justify-content: center;
     align-items: center;
   }
-
-  .modal-overlay-open {
-
-  }
   
   .modal {
     width: 500px;
